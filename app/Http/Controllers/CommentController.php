@@ -17,4 +17,17 @@ class CommentController extends Controller
 
         return view('comments.index', ['comments' => $comments]);
     }
+
+    public function create() {
+        return view('comments.create');
+    }
+    public function store(Request $request) {
+        // dd($request);
+        Comment::create([
+            'content' => $request["content"]
+        ]);
+        // return "store method called";
+
+        return redirect('/comments');
+    }
 }
